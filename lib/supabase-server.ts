@@ -1,10 +1,11 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextRequest, NextResponse } from "next/server";
+import { supabaseUrl, supabaseAnonKey } from "./supabase";
 
 export function createSupabaseMiddlewareClient(request: NextRequest, response: NextResponse) {
   return createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    supabaseUrl,
+    supabaseAnonKey,
     {
       cookies: {
         getAll() {
