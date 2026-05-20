@@ -30,17 +30,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Sidebar } from "@/components/sidebar";
 import { DashboardNavbar } from "@/components/dashboard-navbar";
-import { Logo } from "@/components/logo";
-
-const mobileMenuItems = [
-  { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
-  { href: "/dashboard/chat?mode=chat", icon: MessageSquare, label: "AI Chat" },
-  { href: "/dashboard/chat?mode=solve", icon: Upload, label: "Tanya Soal" },
-  { href: "/dashboard/quiz-generator", icon: Zap, label: "Quiz Generator" },
-  { href: "/dashboard/roadmap", icon: MapIcon, label: "Roadmap" },
-  { href: "/dashboard/history", icon: History, label: "Riwayat" },
-  { href: "/dashboard/settings", icon: Settings, label: "Pengaturan" },
-];
+import { MobileMenu } from "@/components/mobile-menu";
 
 type TabType = "chat" | "quiz" | "roadmap";
 
@@ -247,58 +237,7 @@ export default function HistoryPage() {
 
       {/* Mobile Sidebar Drawer */}
       <AnimatePresence>
-        {mobileMenuOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 z-40 bg-black/40 dark:bg-black/70 backdrop-blur-sm lg:hidden"
-            />
-            <motion.div
-              initial={{ x: -280 }}
-              animate={{ x: 0 }}
-              exit={{ x: -280 }}
-              transition={{ type: "spring", damping: 28, stiffness: 280 }}
-              className="fixed left-0 top-0 bottom-0 z-50 w-64 bg-white dark:bg-zinc-950 border-r border-zinc-200 dark:border-white/[0.06] flex flex-col lg:hidden"
-            >
-              <div className="flex items-center justify-between h-[60px] px-4 border-b border-zinc-200 dark:border-white/[0.06]">
-                <Logo size="sm" href="/dashboard" />
-                <button
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="p-1.5 rounded-lg text-zinc-500 hover:text-zinc-800 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5 transition-all"
-                >
-                  <X size={18} />
-                </button>
-              </div>
-              <nav className="flex-1 px-3 py-4 flex flex-col gap-1">
-                {mobileMenuItems.map((item) => {
-                  const isActive = pathname === item.href;
-                  return (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      <div
-                        className={cn(
-                          "flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all",
-                          isActive
-                            ? "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20"
-                            : "text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/[0.04]"
-                        )}
-                      >
-                        <item.icon size={18} />
-                        <span className="text-sm font-medium">{item.label}</span>
-                      </div>
-                    </Link>
-                  );
-                })}
-              </nav>
-            </motion.div>
-          </>
-        )}
+        <MobileMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
       </AnimatePresence>
 
       {/* Main Content */}

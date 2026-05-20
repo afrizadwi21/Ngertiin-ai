@@ -27,6 +27,7 @@ import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Sidebar } from "@/components/sidebar";
 import { DashboardNavbar } from "@/components/dashboard-navbar";
+import { MobileMenu } from "@/components/mobile-menu";
 import { supabase } from "@/lib/supabase";
 
 interface Question {
@@ -338,50 +339,7 @@ export default function QuizGeneratorPage() {
 
       {/* Mobile Sidebar */}
       <AnimatePresence>
-        {mobileMenuOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm lg:hidden"
-            />
-            <motion.div
-              initial={{ x: -280 }}
-              animate={{ x: 0 }}
-              exit={{ x: -280 }}
-              transition={{ type: "spring", damping: 28, stiffness: 280 }}
-              className="fixed left-0 top-0 bottom-0 z-50 w-64 bg-white dark:bg-zinc-950 border-r border-zinc-200 dark:border-white/[0.06] flex flex-col lg:hidden"
-            >
-              <div className="flex items-center justify-between h-[60px] px-4 border-b border-zinc-200 dark:border-white/[0.06]">
-                <span className="text-lg font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                  Ngerti.in
-                </span>
-                <button
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="p-1.5 rounded-lg text-zinc-500 hover:text-zinc-800 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5"
-                >
-                  <X size={18} />
-                </button>
-              </div>
-              <nav className="flex-1 px-3 py-4 flex flex-col gap-1">
-                {[
-                  { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
-                  { href: "/dashboard/chat?mode=chat", icon: BookOpen, label: "AI Chat" },
-                  { href: "/dashboard/quiz-generator", icon: Zap, label: "Quiz Generator" },
-                ].map((item) => (
-                  <Link key={item.href} href={item.href} onClick={() => setMobileMenuOpen(false)}>
-                    <div className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-zinc-100 dark:hover:bg-white/5 transition-all">
-                      <item.icon size={18} />
-                      <span className="text-sm font-medium">{item.label}</span>
-                    </div>
-                  </Link>
-                ))}
-              </nav>
-            </motion.div>
-          </>
-        )}
+        <MobileMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
       </AnimatePresence>
 
       {/* Main Container */}
