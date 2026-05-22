@@ -88,29 +88,6 @@ export function HeroSection() {
                 Lihat Demo
               </Link>
             </motion.div>
-
-            {/* Social proof */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="flex items-center gap-3 text-sm text-zinc-500"
-            >
-              <div className="flex -space-x-2">
-                {["A", "B", "C", "D"].map((char, i) => (
-                  <div
-                    key={i}
-                    className="w-7 h-7 rounded-full border-2 border-white dark:border-zinc-950 bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center"
-                  >
-                    <span className="text-white text-xs font-bold">{char}</span>
-                  </div>
-                ))}
-              </div>
-              <span>
-                <strong className="text-zinc-900 dark:text-white transition-colors duration-300">2,000+</strong> siswa sudah
-                bergabung
-              </span>
-            </motion.div>
           </div>
 
           {/* Chat mockup */}
@@ -137,7 +114,7 @@ function HeroChatMockup() {
     {
       role: "ai",
       content:
-        "Oke bro! Jadi fotosintesis itu basically kayak tanaman nge-charge diri sendiri. Dia nyedot sinar matahari, terus diproses jadi makanan (gula) + oksigen. Input: CO₂ + air + cahaya ➜ Output: gula + O₂. Gampang kan? 🌿⚡",
+        "Oke bro! Jadi fotosintesis itu basically kayak tanaman nge-charge diri sendiri. Dia nyedot sinar matahari, terus diproses jadi makanan (gula) + oksigen. Input: CO₂ + air + cahaya ➜ Output: gula + O₂. Gampang kan? ",
     },
     { role: "user", content: "Nah gitu dong! Sekarang formal versinya" },
   ];
@@ -182,11 +159,10 @@ function HeroChatMockup() {
                 </div>
               )}
               <div
-                className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
-                  msg.role === "user"
-                    ? "bg-cyan-500/10 dark:bg-cyan-500/20 border border-cyan-500/20 dark:border-cyan-500/30 text-cyan-900 dark:text-cyan-50"
-                    : "bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-white/5 text-zinc-700 dark:text-zinc-200"
-                }`}
+                className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${msg.role === "user"
+                  ? "bg-cyan-500/10 dark:bg-cyan-500/20 border border-cyan-500/20 dark:border-cyan-500/30 text-cyan-900 dark:text-cyan-50"
+                  : "bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-white/5 text-zinc-700 dark:text-zinc-200"
+                  }`}
               >
                 {msg.content}
               </div>

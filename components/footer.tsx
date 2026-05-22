@@ -2,8 +2,7 @@ import Link from "next/link";
 import { Logo } from "@/components/logo";
 
 const footerLinks = {
-  Produk: ["Fitur", "Harga", "Changelog", "Roadmap"],
-  Perusahaan: ["Tentang", "Blog", "Karir", "Press"],
+
   Dukungan: ["Dokumentasi", "Help Center", "Status", "Kontak"],
   Legal: ["Privasi", "Syarat & Ketentuan", "Cookie"],
 };
@@ -58,10 +57,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-zinc-200 dark:border-white/5 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-zinc-600">
-            © 2025 Ngerti.in. All rights reserved.
-          </p>
-          <p className="text-sm text-zinc-600">
-            Made with Afriza
+            ©  Made with Afriza
           </p>
         </div>
       </div>

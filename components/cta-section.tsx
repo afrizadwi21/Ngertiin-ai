@@ -62,10 +62,6 @@ export function CTASection() {
                 Lihat Demo
               </Link>
             </div>
-
-            <p className="mt-6 text-sm text-zinc-600">
-              Sudah 2,000+ siswa bergabung · Tidak perlu kartu kredit
-            </p>
           </div>
         </motion.div>
       </div>
